@@ -59,6 +59,14 @@
   cursor: pointer;
 }
 
+.answerBtn.danger {
+  background-color: rgb(250, 76, 37);
+}
+
+.answerBtn.success {
+  background-color: rgb(46, 182, 46);
+}
+
 .score-board {
   position: relative;
   height: 700px;
@@ -83,6 +91,23 @@
   left: 0px;
   right: 0px;
   margin: auto;
+  outline: none;
+  cursor: pointer;
+}
+
+.result-box {
+  display: flex;
+  margin: 5px 0;
+  padding: 15px;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.play-again-btn {
+  font-size: 0.9rem;
+  padding: 10px;
+  background-color: rgb(46, 182, 46);
+  color: rgb(255, 255, 255);
   outline: none;
   cursor: pointer;
 }

@@ -2,9 +2,9 @@ import React from "react";
 
 export const Result = ({ score, playAgain }) => {
   return (
-    <div className="score-board">
-      <div className="score">You scored {score}/5</div>
-      <button className="playBtn" onClick={playAgain}>
+    <div className="result-box">
+      You scored {score}/5{" "}
+      <button className="play-again-btn" onClick={playAgain}>
         Play again!
       </button>
     </div>

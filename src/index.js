@@ -46,12 +46,12 @@ export class QuizBee extends Component {
       <div className="container">
         <div className="title">QuizBee</div>
         {hasQuestion &&
-          this.state.responseCount < 5 &&
           this.state.questionBank.map(
             ({ question, questionId, answers, correct }) => (
               <QuestionBox
                 question={question}
                 options={answers}
+                correct={correct}
                 key={questionId}
                 selected={(text) => this.computeAnswer(text, correct)}
               />
