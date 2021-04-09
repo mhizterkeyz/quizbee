@@ -372,6 +372,14 @@ const qBank = [
 ];
 
 const getRandomQuestions = (n = 5) =>
-  Promise.resolve(qBank.sort(() => 0.5 - Math.random()).slice(0, n));
+  Promise.resolve(
+    qBank
+      .sort(() => 0.5 - Math.random())
+      .slice(0, n)
+      .map((item) => {
+        item.questionId += `${Math.random()}`;
+        return item;
+      })
+  );
 
 export default getRandomQuestions;

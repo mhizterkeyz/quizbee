@@ -1,7 +1,24 @@
 import React, { useState } from "react";
 
-export const QuestionBox = ({ question, options, selected, correct }) => {
+const shuffle = (array) => {
+  const arrayClone = [...array];
+  const shuffledArray = [];
+
+  while (arrayClone.length > 0) {
+    const [item] = arrayClone.splice(
+      Math.floor(Math.random() * arrayClone.length),
+      1
+    );
+
+    shuffledArray.push(item);
+  }
+
+  return shuffledArray;
+};
+
+export const QuestionBox = ({ question, options: opt, selected, correct }) => {
   const [choice, setChoice] = useState(null);
+  const [options] = useState(shuffle(opt));
 
   return (
     <div className="questionBox">
@@ -17,7 +34,7 @@ export const QuestionBox = ({ question, options, selected, correct }) => {
               setChoice(text);
             }
           }}
-          key={`${index}-${text.replace(/\s/gi, "_")}`}
+          key={`${index}-${Math.random()}`}
         >
           {text}
         </button>
