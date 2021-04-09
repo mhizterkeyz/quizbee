@@ -3,6 +3,7 @@ import ReactDom from "react-dom";
 
 import "./assets/style.css";
 import { QuestionBox } from "./components/QuestionBox";
+import { Result } from "./components/Result";
 import quizService from "./quizService";
 
 export class QuizBee extends Component {
@@ -15,7 +16,7 @@ export class QuizBee extends Component {
   async getQuestions() {
     const questions = await quizService();
 
-    this.setState({ questionBank: questions });
+    this.setState({ questionBank: questions, score: 0, responseCount: 0 });
   }
 
   computeAnswer(choice, correct) {
@@ -28,6 +29,10 @@ export class QuizBee extends Component {
     this.setState({
       responseCount: this.state.responseCount + 1,
     });
+  }
+
+  playAgain() {
+    this.getQuestions();
   }
 
   componentDidMount() {
@@ -53,9 +58,10 @@ export class QuizBee extends Component {
             )
           )}
         {this.state.responseCount >= 5 && (
-          <h4>
-            You scored {this.state.score}/{this.state.responseCount}
-          </h4>
+          <Result
+            score={this.state.score}
+            playAgain={this.playAgain.bind(this)}
+          />
         )}
       </div>
     );
